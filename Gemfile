@@ -17,6 +17,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.5.2'
 
+# Users account management
+gem 'devise', '~> 3.1.1'
+
 # Stripe API integration
 # gem 'stripe'
 
