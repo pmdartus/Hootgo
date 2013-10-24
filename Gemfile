@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 1.5.2'
 
 # Users account management
 gem 'devise', '~> 3.1.1'
+gem 'omniauth', '~> 1.1.4'
+gem 'omniauth-facebook', '~> 1.4.1'
 
 # Stripe API integration
 # gem 'stripe'
