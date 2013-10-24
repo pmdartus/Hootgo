@@ -29,7 +29,7 @@ It install all the packages dependences, form rubygems.org
 bundle install
 ```
 
-### Bootstrap your database
+### Bootstrap your application
 
 Setup the database for development
 
@@ -38,6 +38,14 @@ rake db:create				// Create the databases
 rake db:migrate				// Execute all the migration on the database
 rake db:seed				// Insert the database preexisting objects
 ```
+
+To connect with social network you have to export all the public keys and privates keys
+
+```shell
+export FB_APP_ID="[facebook public key]"
+export FB_APP_SECRET="[facebook secret key]"
+```
+
 ### Prepare the future
 
 ```shell
