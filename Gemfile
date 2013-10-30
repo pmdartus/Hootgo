@@ -25,9 +25,11 @@ gem 'jbuilder', '~> 1.5.2'
 gem 'devise', '~> 3.1.1'
 gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-facebook', '~> 1.4.1'
+gem 'omniauth-twitter', '~> 1.0.1'
 
 # Stripe API integration
 # gem 'stripe'
 
 # Gengo API integration
-# gem 'gengo'
+gem "json", "= 1.8.0"
+gem 'gengo'

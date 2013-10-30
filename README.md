@@ -29,7 +29,8 @@ It install all the packages dependences, form rubygems.org
 bundle install
 ```
 
-### Bootstrap your application
+Boostrap the application
+------------------------
 
 Setup the database for development
 
@@ -46,7 +47,7 @@ export FB_APP_ID="[facebook public key]"
 export FB_APP_SECRET="[facebook secret key]"
 ```
 
-### Prepare the future
+You are now ready to launch the dev server
 
 ```shell
 rails server				// Launch server in development mode
