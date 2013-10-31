@@ -8,4 +8,8 @@ module GengoHelper
     })
   end
 
+  def gengo_post_jobs
+  	
+  end
+
 end
