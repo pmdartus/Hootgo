@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+include GengoHelper
+
+puts ""
+puts "SEED"
+puts "----------"
+#----------------------------
+# Add all suported languages
+#----------------------------
+supported_languages = gengo_api.getServiceLanguages()['response']
+supported_languages.each do |lang|
+	puts "Add language: #{lang['language']}"
+	Language.create(name: lang['language'])
+end
+
