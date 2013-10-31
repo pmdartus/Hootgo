@@ -50,6 +50,7 @@ export FB_APP_SECRET="[facebook secret key]"
 You are now ready to launch the dev server
 
 ```shell
+rake secret 				// Create a secret string for the application
 rails server				// Launch server in development mode
 rake						// Test all the applications
 ```

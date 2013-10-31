@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # Include default devise modules.
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
+  # Initialize account after creation
   before_create :initialize_account
 
   ## find_for_facebook_oauth(auth, signed_in_ressource)
@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
 
   private
 
+  ## initilize_account
+  # Set credit to 0 after the creation of an account
   def initialize_account
     self.credits = 0
   end
