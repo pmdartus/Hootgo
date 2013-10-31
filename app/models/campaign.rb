@@ -1,6 +1,7 @@
 class Campaign < ActiveRecord::Base
 	belongs_to :language
 	belongs_to :user
+	has_many :translations
 
 	before_validation :init_campaign
 

@@ -6,7 +6,6 @@ class CampaignsController < ApplicationController
     @campaigns = current_user.campaigns
   end
 
-
   def show
   end
 
@@ -33,11 +32,16 @@ class CampaignsController < ApplicationController
 
   private
 
+  ## set_compaign
+  # Find and return the campaign passed in parameter
+  # if the current_user is not the owner of the camapaign it return a 404
   def set_campaign
     @campaign = Campaign.find(params[:id])
     @campaign.user_id != current_user.id ? not_found : @campaign
   end
 
+  ## camapign_params
+  # Define all the aceptable parameters for a post request
   def campaign_params
     params.require(:campaign).permit(:source_text, :language)
   end
