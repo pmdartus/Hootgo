@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
+  before_create :initialize_account
+
   ## find_for_facebook_oauth(auth, signed_in_ressource)
   # Create and/or return the signed in user, with a random password
   # param auth : facebook informations and credentials
@@ -23,4 +25,9 @@ class User < ActiveRecord::Base
     user
   end
 
+  private
+
+  def initialize_account
+    self.credits = 0
+  end
 end
