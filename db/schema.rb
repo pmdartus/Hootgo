@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031093741) do
+ActiveRecord::Schema.define(version: 20131031104439) do
 
   create_table "campaigns", force: true do |t|
     t.text     "source_text"
     t.text     "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "language_id"
   end
 
   create_table "languages", force: true do |t|
