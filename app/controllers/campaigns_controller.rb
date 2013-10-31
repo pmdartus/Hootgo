@@ -1,9 +1,9 @@
 class CampaignsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_capaign, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign, only: [:show, :edit, :update, :destroy]
 
   def index
-    @campaigns = Campaign.all
+    @campaigns = current_user.campaigns
   end
 
 
@@ -15,10 +15,12 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = Campaign.new(campaign_params)
-    @camapign.state = pending
+    @campaign = Campaign.new
+    @campaign.language = Language.find(campaign_params['language'])
+    @campaign.source_text = campaign_params['source_text']
+    @campaign.user = current_user
     respond_to do |format|
-      if @article.save
+      if @campaign.save
         format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
         format.json { render json: @campaign, status: :created, location: @campaign }
       else
@@ -33,9 +35,10 @@ class CampaignsController < ApplicationController
 
   def set_campaign
     @campaign = Campaign.find(params[:id])
+    @campaign.user_id != current_user.id ? not_found : @campaign
   end
 
-  def article_params
+  def campaign_params
     params.require(:campaign).permit(:source_text, :language)
   end
 end

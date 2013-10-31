@@ -2,6 +2,6 @@
 
 <ul>
 	<% @campaigns.each do |camp| %>
-	<p><%= camp.initial %>  => <%= camp.translation %> (<%= camp.langage %>)</p>
+	<p><%= camp.source_text %> (<%= camp.language.name %>)</p>
 	<% end %>
 </ul>

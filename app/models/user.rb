@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
+  has_many :campaigns
+
   # Initialize account after creation
   before_create :initialize_account
 
