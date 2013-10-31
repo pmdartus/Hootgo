@@ -18,17 +18,18 @@ class Translation < ActiveRecord::Base
   end
 
   def send_job_to_gengo
-    gengo_api.postTranslationJobs({
+    ret = gengo_api.postTranslationJobs({
       jobs: {
         job_1: {
           :type => "text",
           :slug => "Tweet translation",
           :body_src => campaign.source_text,
-          :lc_src => "de",
-          :lc_tgt => "en",
+          :lc_src => campaign.language.code,
+          :lc_tgt => self.language.code,
           :tier => "standard"
         }
       }
     })
+
   end
 end

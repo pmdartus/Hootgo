@@ -7,9 +7,5 @@ module GengoHelper
       :sandbox => true, # Or false, depending on your work
     })
   end
-
-  def gengo_post_jobs
-  	
-  end
-
+  
 end
