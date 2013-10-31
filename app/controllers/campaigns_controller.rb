@@ -20,6 +20,8 @@ class CampaignsController < ApplicationController
     @campaign.user = current_user
     respond_to do |format|
       if @campaign.save
+        @campaign.set_translations(campaign_params['translations'])
+
         format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
         format.json { render json: @campaign, status: :created, location: @campaign }
       else
@@ -43,6 +45,6 @@ class CampaignsController < ApplicationController
   ## camapign_params
   # Define all the aceptable parameters for a post request
   def campaign_params
-    params.require(:campaign).permit(:source_text, :language)
+    params.require(:campaign).permit(:source_text, :language, :translations => [])
   end
 end

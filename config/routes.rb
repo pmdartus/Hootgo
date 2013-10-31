@@ -4,7 +4,10 @@ Hootgo::Application.routes.draw do
 
   get "dashboard", to: "campaigns#index"  
   get "order", to: "campaigns#new"
-  resources :campaigns  
+  
+  resources :campaigns do
+  	resources :translations
+  end
 
   root 'home#index'
 

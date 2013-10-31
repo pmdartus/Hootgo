@@ -17,8 +17,15 @@
   </div>
 
   <div class="field">
+    <%= f.label :language %></br>
     <%= f.collection_select(:language, Language.all, :id, :name) %>
   </div>
+
+  <div class="field">
+    <%= f.label :translations %></br>
+    <%= f.collection_check_boxes(:translations, Language.all, :id, :name) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

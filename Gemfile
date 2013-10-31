@@ -6,6 +6,10 @@ gem 'rails', '~>4.0.0'
 # Development webserver
 gem 'thin', '~> 1.5.0'
 
+group :development do
+  gem "better_errors"
+end
+
 # Database
 gem 'sqlite3'
 
