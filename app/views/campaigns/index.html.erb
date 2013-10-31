@@ -1,0 +1,7 @@
+<h1>Campaigns List</h1>
+
+<ul>
+	<% @campaigns.each do |camp| %>
+	<p><%= camp.initial %>  => <%= camp.translation %> (<%= camp.langage %>)</p>
+	<% end %>
+</ul>

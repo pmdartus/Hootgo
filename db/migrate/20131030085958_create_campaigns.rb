@@ -1,9 +1,8 @@
 class CreateCampaigns < ActiveRecord::Migration
   def change
     create_table :campaigns do |t|
-      t.text :initial
-      t.text :translation
-      t.string :langage
+      t.text :source_text
+      t.text :status
 
       t.timestamps
     end
