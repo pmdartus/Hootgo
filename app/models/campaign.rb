@@ -9,7 +9,6 @@ class Campaign < ActiveRecord::Base
 	before_validation :init_campaign
 
 	def set_translations(languages)
-		puts languages
 		languages.each do |lang|
 			if lang != ""
 				trans = self.translations.new
@@ -23,5 +22,6 @@ class Campaign < ActiveRecord::Base
 
 	def init_campaign
 		self.status = "pending"
+		self.used_credits = 0
 	end
 end
