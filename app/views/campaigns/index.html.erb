@@ -2,6 +2,17 @@
 
 <ul>
 	<% @campaigns.each do |camp| %>
-	<p><%= camp.source_text %> (<%= camp.language.name %>)</p>
+	<article>
+		<p>
+			<%= camp.source_text %>
+		</p>
+		<p>Status: <%= camp.status %></p>
+		<p>Camp cost: <%= camp.used_credits %></p>
+		<p>Number of translations : <%= camp.translations.count %></p>
+
+		<%= link_to "Show details", camp, class:"btn btn-default" %>
+	</article>
+
+	<hr>
 	<% end %>
 </ul>
