@@ -13,8 +13,12 @@ end
 # Database
 gem 'sqlite3'
 
+# Runtime Js
+gem 'therubyracer'
+
 # Assets
 gem 'sass-rails', '~> 4.0.0'
+gem 'less-rails-bootstrap', '~> 3.0.4'
 gem 'uglifier', '~> 2.2.1'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails', '~> 3.0.4'
