@@ -9,9 +9,8 @@
 </head>
 <body>
 
-
+<!-- Navbar -->
 <nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
       <span class="sr-only">Toggle navigation</span>
@@ -51,6 +50,7 @@
     <% end %>
 </nav>
 
+<!-- Notifications -->
 <% if notice %>
 <div class="alert alert-success"><%= notice %></div>
 <% end %>
@@ -59,7 +59,10 @@
 <div class="alert alert-danger"><%= alert %></div>
 <% end %>
 
-<%= yield %>
+<!-- Render the main view -->
+<div class="container">
+  <%= yield %>  
+</div>
 
 </body>
 </html>
