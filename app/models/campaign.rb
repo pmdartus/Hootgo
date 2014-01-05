@@ -1,4 +1,7 @@
 class Campaign < ActiveRecord::Base
+
+  	include GengoHelper
+
 	belongs_to :language
 	belongs_to :user
 	has_many :translations, dependent: :destroy
@@ -16,6 +19,24 @@ class Campaign < ActiveRecord::Base
 				trans.save
 			end
 		end
+	end
+
+	## send_job_to_gengo
+	# Setup and send the translation job to the gengo API
+	def send_job_to_gengo
+	  # Send the Job to gengo API
+	  gengo_jobs = {:jobs => {}}
+	  self.translations.each_with_index{ |trans, index|
+		job = trans.format_to_gengo(self.source_text, self.language.code)
+		job_key = "job_#{index + 1}"
+		gengo_jobs[:jobs][job_key] = job
+	  }
+
+	  ret = gengo_api.postTranslationJobs(gengo_jobs)
+
+	  # Update Campaign credits
+	  translation_credit = ret['response']['credits_used'].sub(".", "").to_i
+	  self.update(used_credits: translation_credit.ceil.to_i * 1.5)
 	end
 
 	private

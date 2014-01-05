@@ -1,0 +1,20 @@
+<h1>Campaign details</h1>
+
+<h3>Origin post</h3>
+<p>
+	<%= @campaign.source_text %>
+</p>
+<p><b>Origin language:</b> <%= @campaign.language.name %></p>
+<p><b>Status:</b> <%= @campaign.status %></p>
+<p><b>Camp cost:</b> <%= @campaign.used_credits %></p>
+<p><b>Number of translations :</b> <%= @campaign.translations.count %></p>
+
+<h3>Translations deptails</h3>
+
+<% @campaign.translations.each do |trans| %>
+	<p><b>Translation status:</b> <%= trans.status %></p>
+	<p><b>Translation language:</b><%= @campaign.language.name %> -> <%= trans.language.name %></p>
+	<p><b>Translation text:</b><%= trans.translated_text %></p>
+
+	<hr>
+<% end %>
