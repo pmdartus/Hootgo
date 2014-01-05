@@ -10,8 +10,9 @@ gem 'unicorn'
 gem 'sqlite3', group: [:development, :test]
 gem 'pg', group: [:production]
 
-group :development do
+group :development, :test do
   gem 'better_errors'
+  gem 'rspec-rails', '~> 3.0.0.beta'
 end
 
 # Runtime Js

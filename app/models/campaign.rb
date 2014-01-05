@@ -6,7 +6,7 @@ class Campaign < ActiveRecord::Base
 	belongs_to :user
 	has_many :translations, dependent: :destroy
 
-	validates :source_text, :language_id, :status, :user, presence: true
+	validates :source_text, :language_id, :user, presence: true
 	validate :debit_user
 
 	def set_translations(languages)
