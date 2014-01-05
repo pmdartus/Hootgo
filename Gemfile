@@ -43,4 +43,7 @@ gem 'omniauth-twitter', '~> 1.0.1'
 gem "json", "= 1.8.0"
 gem 'gengo'
 
+# Heroku gem for plugins
+gem 'rails_12factor', group: :production
+
 ruby "2.0.0"

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Hootgo::Application.config.secret_key_base = '711aef0edf73f79640d46ac03b049dbe034d72129990574ea2e90beabf0283f8f9303ee88b8e70378df02c68c9625a3a725faae88a7655acbfff7bc41f285ec2'
+Hootgo::Application.config.secret_key_base = ENV['SECRET_TOKEN']
