@@ -1,6 +1,6 @@
 FactoryGirl.define do
-    factory :language do |f|
-        f.name "French"
-        f.code "fr"
+    factory :language do
+        name "French"
+        code "fr"
     end
 end
