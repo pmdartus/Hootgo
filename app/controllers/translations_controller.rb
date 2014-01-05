@@ -6,7 +6,7 @@ class TranslationsController < ApplicationController
   # Update the status of the selected translation
   def update_status
     ret = ActiveSupport::JSON.decode(params[:job])
-    if ret[:status] == "approved"
+    if ret["status"] == "approved"
       @translation.status = "available"
       @translation.translated_text = ret[:body_tgt]
       @translation.save
