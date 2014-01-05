@@ -11,6 +11,8 @@ class TranslationsController < ApplicationController
       @translation.translated_text = ret[:body_tgt]
       @translation.save
     end
+
+    render status: 200
   end
 
   private
