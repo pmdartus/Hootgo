@@ -42,3 +42,5 @@ gem 'omniauth-twitter', '~> 1.0.1'
 # Gengo API integration
 gem "json", "= 1.8.0"
 gem 'gengo'
+
+ruby "2.0.0"
