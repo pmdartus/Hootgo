@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # ruby on rails framework
-gem 'rails', '~>4.0.0'
+gem 'rails', '~>4.0.2'
 
 # Webserver
 gem 'unicorn'
