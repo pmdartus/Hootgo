@@ -9,8 +9,6 @@ class Campaign < ActiveRecord::Base
 	validates :source_text, :language_id, :status, :user, presence: true
 	validate :debit_user
 
-	before_validation :init_campaign
-
 	def set_translations(languages)
 		languages.each do |lang|
 			if lang != ""
