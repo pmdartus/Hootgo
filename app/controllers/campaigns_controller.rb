@@ -20,11 +20,12 @@ class CampaignsController < ApplicationController
     @campaign.user = current_user
 
     @campaign.set_translations(campaign_params['translations'])
-    @campaign.send_job_to_gengo
-    puts @campaign.to_json
+    @campaign.get_quote
 
     respond_to do |format|
       if @campaign.save
+        @campaign.send_job_to_gengo
+
         format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
         format.json { render json: @campaign, status: :created, location: @campaign }
       else

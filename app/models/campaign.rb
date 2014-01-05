@@ -22,11 +22,29 @@ class Campaign < ActiveRecord::Base
 		end
 	end
 
+	def get_quote
+		quote = 0
+		gengo_jobs = {:jobs => {}}
+
+		self.translations.each_with_index{ |trans, index|
+			job = trans.format_to_gengo(self)
+			job_key = "job_#{index + 1}"
+			gengo_jobs[:jobs][job_key] = job
+		}
+
+		ret = gengo_api.getTranslationQuote(gengo_jobs)
+		ret["response"]["jobs"].each_value{ |trans|
+			quote += trans["credits"]
+		}
+
+		self.used_credits = quote * 100 * 1.5
+	end
+
 	## send_job_to_gengo
 	# Setup and send the translation job to the gengo API
 	def send_job_to_gengo
-	  # Send the Job to gengo API
-	  gengo_jobs = {:jobs => {}}
+	  gengo_jobs = { jobs:{} }
+
 	  self.translations.each_with_index{ |trans, index|
 		job = trans.format_to_gengo(self)
 		job_key = "job_#{index + 1}"
