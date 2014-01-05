@@ -18,11 +18,13 @@ class CampaignsController < ApplicationController
     @campaign.language = Language.find(campaign_params['language'])
     @campaign.source_text = campaign_params['source_text']
     @campaign.user = current_user
-    respond_to do |format|
-      if @campaign.save
-        @campaign.set_translations(campaign_params['translations'])
-        @campaign.send_job_to_gengo
 
+    @campaign.set_translations(campaign_params['translations'])
+    @campaign.send_job_to_gengo
+    puts @campaign.to_json
+
+    respond_to do |format|
+      if @campaign.save!
         format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
         format.json { render json: @campaign, status: :created, location: @campaign }
       else

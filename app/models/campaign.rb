@@ -35,14 +35,13 @@ class Campaign < ActiveRecord::Base
 	  ret = gengo_api.postTranslationJobs(gengo_jobs)
 
 	  # Update Campaign credits
-	  translation_credit = ret['response']['credits_used'].sub(".", "").to_i
-	  self.update(used_credits: translation_credit.ceil.to_i * 1.5)
+	  translation_credit = ret['response']['credits_used'].sub(".", "").to_i * 1.5
+	  self.used_credits = translation_credit.ceil
 	end
 
 	private
 
 	def init_campaign
 		self.status = "pending"
-		self.used_credits = 0
 	end
 end
