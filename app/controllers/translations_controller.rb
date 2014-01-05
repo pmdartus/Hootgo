@@ -3,7 +3,7 @@ class TranslationsController < ApplicationController
   before_action :set_translation, only: [:update_status]
 
   def update_status
-    puts ActiveSupport::JSON.decode(request.body.read)
+    puts params[:job]
   end
 
   private
