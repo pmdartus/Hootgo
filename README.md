@@ -12,6 +12,7 @@ Installation
 * [Ruby](http://www.ruby-lang.org/fr/)
 * [Rails](http://rubyonrails.org/)
 * [Bundler](http://gembundler.com/)
+* [Foreman](http://ddollar.github.io/foreman/)
 * [sqLite3](http://www.sqlite.org/)
 
 ### Get the sources
@@ -40,17 +41,22 @@ rake db:migrate				// Execute all the migration on the database
 rake db:seed				// Insert the database preexisting objects
 ```
 
-To connect with social network you have to export all the public keys and privates keys
+To be able to launch the server you will have to create a `.env` file in the root directory
 
 ```shell
-export FB_APP_ID="[facebook public key]"
-export FB_APP_SECRET="[facebook secret key]"
+RACK_ENV=development
+PORT=3000
+SECRET_TOKEN=[A random secret token]
+FB_APP_ID=[Facebook application ID]
+FB_APP_SECRET=[Facebook application secret]
+TW_APP_ID=[Twitter application ID]
+TW_APP_SECRET=[Twitter application secret]
 ```
 
 You are now ready to launch the dev server
 
 ```shell
-rake secret 				// Create a secret string for the application
-rails server				// Launch server in development mode
+gem install foreman         // Install the foreman gem to launch the unicorn server
+foreman start				// Launch server in development mode
 rake						// Test all the applications
 ```
