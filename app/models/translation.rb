@@ -8,14 +8,16 @@ class Translation < ActiveRecord::Base
 
   before_validation :init_translation
 
-  def format_to_gengo(source_text, source_lang)
+  def format_to_gengo(camp)
     job = {
       :type => "text",
       :slug => "Twitter",
-      :body_src => source_text,
-      :lc_src => source_lang,
+      :body_src => camp.source_text,
+      :lc_src => camp.language.code,
       :lc_tgt => self.language.code,
-      :tier => "standard"
+      :tier => "standard",
+      :callback_url => "http://hootgo.herokuapp.com/campaigns/#{camp.id}/translations/#{self.id}/update_status",
+      :auto_approve => 1
     }
   end
 

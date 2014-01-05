@@ -28,7 +28,7 @@ class Campaign < ActiveRecord::Base
 	  # Send the Job to gengo API
 	  gengo_jobs = {:jobs => {}}
 	  self.translations.each_with_index{ |trans, index|
-		job = trans.format_to_gengo(self.source_text, self.language.code)
+		job = trans.format_to_gengo(self)
 		job_key = "job_#{index + 1}"
 		gengo_jobs[:jobs][job_key] = job
 	  }
