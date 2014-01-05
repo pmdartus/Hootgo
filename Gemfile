@@ -3,9 +3,8 @@ source 'https://rubygems.org'
 # ruby on rails framework
 gem 'rails', '~>4.0.0'
 
-# Development webserver
-gem 'thin', '~> 1.5.0', group: [:development, :test]
-gem 'unicorn', group: [:production]
+# Webserver
+gem 'unicorn'
 
 # Database
 gem 'sqlite3', group: [:development, :test]
