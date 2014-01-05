@@ -24,7 +24,7 @@ class CampaignsController < ApplicationController
     puts @campaign.to_json
 
     respond_to do |format|
-      if @campaign.save!
+      if @campaign.save
         format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
         format.json { render json: @campaign, status: :created, location: @campaign }
       else
@@ -34,6 +34,13 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def destroy
+    @campaign.destroy
+    respond_to do |format|
+      format.html { redirect_to campaigns_path, notice: 'Campaign was successfully deleted.' }
+      format.json { render status: :deleted, location: campaigns_path }
+    end
+  end
 
   private
 

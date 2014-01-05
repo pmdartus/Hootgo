@@ -1,18 +1,24 @@
-<h1>Campaigns List</h1>
+<header class="row">
+	<h1 class="col-md-8">Campaigns List</h1>
+	<div class="col-md-4"><%= link_to "New Campaign", new_campaign_path, class:"btn btn-info" %></div>
+</header>
 
-<ul>
-	<% @campaigns.each do |camp| %>
-	<article>
-		<p>
-			<%= camp.source_text %>
-		</p>
+<hr/>
+
+<% @campaigns.each do |camp| %>
+<article class="row">
+	<div class="col-md-8">
+		<blockquote>
+			<p><%= camp.source_text %></p>
+		</blockquote>
 		<p>Status: <%= camp.status %></p>
 		<p>Camp cost: <%= camp.used_credits %></p>
-		<p>Number of translations : <%= camp.translations.count %></p>
+	</div>
+	<div class="col-md-4">
+		<%= link_to "Show details", camp, class:"btn btn-info" %>
+		<%= link_to "Delete", camp, :method=>:delete, class:"btn btn-warning" %>
+	</div>
+</article>
 
-		<%= link_to "Show details", camp, class:"btn btn-default" %>
-	</article>
-
-	<hr>
-	<% end %>
-</ul>
+<hr>
+<% end %>

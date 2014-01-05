@@ -7,9 +7,9 @@ gem 'rails', '~>4.0.0'
 gem 'thin', '~> 1.5.0'
 
 # Database
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: [:production]
 
-# Debug tool
 group :development do
   gem 'better_errors'
 end
