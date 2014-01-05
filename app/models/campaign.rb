@@ -13,6 +13,7 @@ class Campaign < ActiveRecord::Base
 		languages.each do |lang|
 			if lang != ""
 				trans = self.translations.new
+    			trans.status = "pending"
 				trans.language = Language.find(lang)
 				trans.save
 			end

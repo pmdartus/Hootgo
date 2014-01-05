@@ -6,8 +6,6 @@ class Translation < ActiveRecord::Base
   validates_presence_of :language, :status
   validates :status, inclusion: { in: %w(pending reviewable available), message: "%{value} is not a valid status" }
 
-  before_validation :init_translation
-
   def format_to_gengo(camp)
     job = {
       :type => "text",
@@ -21,11 +19,4 @@ class Translation < ActiveRecord::Base
     }
   end
 
-  private
-
-  ## init_translation
-  # Setup the translation
-  def init_translation
-    self.status = "pending"
-  end
 end

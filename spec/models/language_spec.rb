@@ -11,7 +11,8 @@ describe Language do
   end
 
   it "should be invalid with another name and code" do
-    FactoryGirl.build(:language, name: "bob").should_not be_valid
+    lang = FactoryGirl.build(:language, name: "bob")
+    lang.existing_language.should eq(false)
   end
 
   it "shouldn't store duplicate langage" do

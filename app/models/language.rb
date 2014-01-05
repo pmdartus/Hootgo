@@ -4,16 +4,18 @@ class Language < ActiveRecord::Base
 
 	validates :name, uniqueness: true, presence: true
 	validates :code, uniqueness: true, presence: true
-	validate :existing_language
 
-
-	private
-
+	## existing_language
+	# Check if the created language if manage by gengo
+	# Not a validation because it tacks to long for testing
 	def existing_language
 		gengo_language = gengo_api.getServiceLanguages()['response']
 		if !( gengo_language.any? {|lan| lan['language'] == name} )
-			errors.add(:name, "Not present Gengo translation for the selected language")
+			return false
 		end
+
+		return true
 	end
 
+	private
 end
