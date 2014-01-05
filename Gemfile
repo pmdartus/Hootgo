@@ -13,6 +13,8 @@ gem 'pg', group: [:production]
 group :development, :test do
   gem 'better_errors'
   gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
 end
 
 # Runtime Js

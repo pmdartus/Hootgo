@@ -1,8 +1,9 @@
 class Language < ActiveRecord::Base
-	
+
 	include GengoHelper
 
 	validates :name, uniqueness: true, presence: true
+	validates :code, uniqueness: true, presence: true
 	validate :existing_language
 
 
