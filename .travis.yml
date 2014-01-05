@@ -1,4 +1,4 @@
 language: ruby
 cache: bundler
-rvm
+rvm:
   - 2.0.0-p195
