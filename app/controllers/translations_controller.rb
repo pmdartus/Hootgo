@@ -5,6 +5,7 @@ class TranslationsController < ApplicationController
   ## update_status
   # Update the status of the selected translation
   def update_status
+    puts params[:job]
     if params[:job][:status] == "approved"
       @translation.status = "available"
       @translation.translated_text = params[:job][:body_tgt]
