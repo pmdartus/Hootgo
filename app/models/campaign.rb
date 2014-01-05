@@ -7,7 +7,6 @@ class Campaign < ActiveRecord::Base
 	has_many :translations, dependent: :destroy
 
 	validates :source_text, :language_id, :status, :user, presence: true
-	validates :status, inclusion: { in: %w(pending available posted), message: "%{value} is not a valid status" }
 	validate :debit_user
 
 	before_validation :init_campaign
@@ -58,11 +57,18 @@ class Campaign < ActiveRecord::Base
 	  self.used_credits = translation_credit.ceil
 	end
 
-	private
+	def get_status
+		status = "Launched"
+		self.translations.each { |trans|
+			if trans.status != "available"
+				status = "Open"
+			end
+		}
 
-	def init_campaign
-		self.status = "pending"
+		return status
 	end
+
+	private
 
 	def debit_user
 		if self.user.credits - self.used_credits < 0

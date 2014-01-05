@@ -1,20 +1,41 @@
-<h1>Campaign details</h1>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Campaign details</div>
+  <div class="panel-body">
+    <div class="row">
+        <blockquote class="col-md-8">
+            <p><%= @campaign.source_text %></p>
+        </blockquote>
 
-<h3>Origin post</h3>
-<p>
-	<%= @campaign.source_text %>
-</p>
-<p><b>Origin language:</b> <%= @campaign.language.name %></p>
-<p><b>Status:</b> <%= @campaign.status %></p>
-<p><b>Camp cost:</b> <%= @campaign.used_credits %></p>
-<p><b>Number of translations :</b> <%= @campaign.translations.count %></p>
+        <p class="col-md-4">
+            <b>Origin language:</b> <%= @campaign.language.name %> <br/>
+            <b>Status:</b> <%= @campaign.get_status %> <br/>
+            <b>Camp cost:</b> <%= @campaign.used_credits %><br/>
+        </p>
+    </div>
+  </div>
 
-<h3>Translations deptails</h3>
+  <!-- List group -->
+  <ul class="list-group">
+    <% @campaign.translations.each do |trans| %>
+        <li class="list-group-item">
+            <div class="row">
+            <% if trans.translated_text %>
+                <blockquote class="col-md-8">
+                    <p><%= trans.translated_text %></p>
+                </blockquote>
+            <% else %>
+                <div class="col-md-8">
+                    <span class="glyphicon glyphicon-tasks"></span>  In progress
+                </div>
+            <% end %>
 
-<% @campaign.translations.each do |trans| %>
-	<p><b>Translation status:</b> <%= trans.status %></p>
-	<p><b>Translation language:</b><%= @campaign.language.name %> -> <%= trans.language.name %></p>
-	<p><b>Translation text:</b><%= trans.translated_text %></p>
-
-	<hr>
-<% end %>
+            <p class="col-md-4">
+                <b>Translation language:</b> <%= trans.language.name %> </br>
+                <b>Translation status:</b> <span class="label label-info"><%= trans.status %></span>
+            </p>
+        </div>
+    </li>
+    <% end %>
+  </ul>
+</div>

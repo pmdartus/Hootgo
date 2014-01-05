@@ -2,9 +2,14 @@ class TranslationsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:update_status]
   before_action :set_translation, only: [:update_status]
 
+  ## update_status
+  # Update the status of the selected translation
   def update_status
-    puts "Ma bite       #{params[:job]}"
-    puts "Other params #{params.to_json}"
+    if params[:job][:status] == "approved"
+      @translation.status = "available"
+      @translation.translated_text = params[:job][:body_tgt]
+      @translation.save
+    end
   end
 
   private
