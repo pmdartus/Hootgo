@@ -3,7 +3,7 @@ class TranslationsController < ApplicationController
   before_action :set_translation, only: [:update_status]
 
   def update_status
-
+    puts ActiveSupport::JSON.decode(request.body.read)
   end
 
   private
@@ -13,12 +13,5 @@ class TranslationsController < ApplicationController
   # if the current_user is not the owner of the camapaign it return a 404
   def set_translation
     @translation = Translation.find(params[:translation_id])
-  end
-
-  ## camapign_params
-  # Define all the aceptable parameters for a post request
-  def translation_params
-    puts params.to_json
-    params.require(:job).permit(:job, :language, :translations => [])
   end
 end
