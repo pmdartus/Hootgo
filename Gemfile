@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '~>4.0.0'
 
 # Development webserver
-gem 'thin', '~> 1.5.0'
+gem 'thin', '~> 1.5.0', group: [:development, :test]
+gem 'unicorn', group: [:production]
 
 # Database
 gem 'sqlite3', group: [:development, :test]
