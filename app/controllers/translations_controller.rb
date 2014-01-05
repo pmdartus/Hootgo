@@ -18,6 +18,7 @@ class TranslationsController < ApplicationController
   ## camapign_params
   # Define all the aceptable parameters for a post request
   def translation_params
+    puts params.to_json
     params.require(:job).permit(:job, :language, :translations => [])
   end
 end
