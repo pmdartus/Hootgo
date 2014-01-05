@@ -8,7 +8,7 @@ class TranslationsController < ApplicationController
     ret = ActiveSupport::JSON.decode(params[:job])
     if ret["status"] == "approved"
       @translation.status = "available"
-      @translation.translated_text = ret[:body_tgt]
+      @translation.translated_text = ret["body_tgt"]
       @translation.save
     end
 
