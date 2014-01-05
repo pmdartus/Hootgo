@@ -1,5 +1,6 @@
 class TranslationsController < ApplicationController
-  before_action :set_translation, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => [:update_status]
+  before_action :set_translation, only: [:update_status]
 
   def update_status
 
