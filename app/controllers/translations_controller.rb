@@ -3,7 +3,8 @@ class TranslationsController < ApplicationController
   before_action :set_translation, only: [:update_status]
 
   def update_status
-    puts params[:job]
+    puts "Ma bite       #{params[:job]}"
+    puts "Other params #{params.to_json}"
   end
 
   private
