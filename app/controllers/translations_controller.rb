@@ -12,7 +12,7 @@ class TranslationsController < ApplicationController
       @translation.save
     end
 
-    render status: 200
+    render :nothing => true, :status => 204
   end
 
   private
