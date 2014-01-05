@@ -8,6 +8,7 @@ class Campaign < ActiveRecord::Base
 
 	validates :source_text, :language_id, :status, :user, presence: true
 	validates :status, inclusion: { in: %w(pending available posted), message: "%{value} is not a valid status" }
+	validate :debit_user
 
 	before_validation :init_campaign
 
@@ -43,5 +44,14 @@ class Campaign < ActiveRecord::Base
 
 	def init_campaign
 		self.status = "pending"
+	end
+
+	def debit_user
+		if self.user.credits - self.used_credits < 0
+			errors.add(:used_credits, "Not enough credits for this campaign")
+		else
+			self.user.credits -= used_credits
+			self.user.save
+		end
 	end
 end
