@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :campaigns, dependent: :destroy
 
-  # Initialize account after creation
   before_create :initialize_account
+
+  validate :positive_credits
 
   ## find_for_facebook_oauth(auth, signed_in_ressource)
   # Create and/or return the signed in user, with a random password
@@ -34,7 +35,7 @@ class User < ActiveRecord::Base
     until credit_string.length > 2
       credit_string.insert(0, '0')
     end
-    credit_string.insert(-3, '.')
+    credit_string .insert(-3, '.')
   end
 
   private
@@ -43,5 +44,11 @@ class User < ActiveRecord::Base
   # Set credit to 0 after the creation of an account
   def initialize_account
     self.credits = 0
+  end
+
+  ## positive_credits
+  # Add an error if the balance is negative
+  def positive_credits
+    errors.add(:credits, "Not enough credits") if self.credits and self.credits < 0
   end
 end

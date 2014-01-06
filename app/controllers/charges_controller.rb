@@ -21,6 +21,9 @@ class ChargesController < ApplicationController
         )
 
         current_user.credits += @amount
+        current_user.save
+
+        redirect_to campaigns_path, notice: "Your card has been credited of $#{current_user.get_credits}."
 
     rescue Stripe::CardError => e
         flash[:error] = e.message
