@@ -30,7 +30,11 @@ class User < ActiveRecord::Base
   ## get_credits
   # Return the available credits in usd
   def get_credits
-    self.credits.to_s.insert(-3, '.')
+    credit_string = self.credits.to_s
+    until credit_string.length > 2
+      credit_string.insert(0, '0')
+    end
+    credit_string.insert(-3, '.')
   end
 
   private
