@@ -3,7 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
-
+    puts request.env["omniauth.auth"].to_json
     if @user.persisted?
       auth = request.env["omniauth.auth"]
       session['fb_access_token'] = auth.credentials.token
@@ -14,7 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
-  
+
   def twitter
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.find_for_twitter_oauth(request.env["omniauth.auth"], current_user)

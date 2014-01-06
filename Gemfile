@@ -40,7 +40,7 @@ gem 'omniauth-facebook', '~> 1.4.1'
 gem 'omniauth-twitter', '~> 1.0.1'
 
 # Stripe API integration
-# gem 'stripe'
+gem 'stripe'
 
 # Gengo API integration
 gem "json", "= 1.8.0"

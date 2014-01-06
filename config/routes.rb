@@ -11,6 +11,8 @@ Hootgo::Application.routes.draw do
     end
   end
 
+  resources :charges
+
   root 'home#index'
 
 end

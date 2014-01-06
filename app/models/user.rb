@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
-  has_many :campaigns
+  has_many :campaigns, dependent: :destroy
 
   # Initialize account after creation
   before_create :initialize_account
@@ -25,6 +25,12 @@ class User < ActiveRecord::Base
                          )
     end
     user
+  end
+
+  ## get_credits
+  # Return the available credits in usd
+  def get_credits
+    self.credits.to_s.insert(-3, '.')
   end
 
   private
