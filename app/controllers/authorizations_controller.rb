@@ -11,6 +11,13 @@ class AuthorizationsController < ApplicationController
     puts request.env["omniauth.auth"].to_json
     authorization = Authorization.where(provider: omniauth.provider, uid: omniauth.uid, user_id: current_user.id).first
     if authorization
+      client = Twitter::REST::Client.new do |config|
+        config.consumer_key        = ENV["TW_APP_ID"]
+        config.consumer_secret     = ENV["TW_APP_SECRET"]
+        config.access_token        = authorization.oauth_token
+        config.access_token_secret = authorization.oauth_secret_token
+      end
+      client.update("I'm tweeting with @gem!")
       flash[:notice] = "You had connected this application before"
       redirect_to authorizations_path
     else

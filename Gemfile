@@ -39,6 +39,9 @@ gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-facebook', '~> 1.4.1'
 gem 'omniauth-twitter', '~> 1.0.1'
 
+# Twitter management
+gem 'twitter', :git => 'https://github.com/sferik/twitter.git'
+
 # Stripe API integration
 # gem 'stripe'
 
