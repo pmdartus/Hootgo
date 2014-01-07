@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031223003) do
+ActiveRecord::Schema.define(version: 20140107074551) do
+
+  create_table "authorizations", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.text     "oauth_token"
+    t.text     "oauth_refresh_token"
+    t.datetime "oath_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "campaigns", force: true do |t|
     t.text     "source_text"
@@ -57,6 +68,7 @@ ActiveRecord::Schema.define(version: 20131031223003) do
     t.string   "uid"
     t.string   "name"
     t.integer  "credits"
+    t.integer  "stripe_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
