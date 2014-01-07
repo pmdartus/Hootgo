@@ -1,0 +1,18 @@
+<p><strong>You have signed in with these services:</strong></p>
+
+<div class="authentications">
+  <% for authorization in @authorizations %>
+    <div class="authentication">
+      <div class="provider"><%= authorization.provider_name %></div>
+      <div class="uid"><%= authorization.uid %></div>
+      <%= link_to "X", authorization, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>
+
+<p>Connect with :</p>
+<ul>
+  <li><a href="/auth/twitter">Twitter</a></li>
+  <li><a href="/auth/facebook">Facebook</a></li>
+</ul>
