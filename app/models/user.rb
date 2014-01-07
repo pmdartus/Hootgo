@@ -17,7 +17,4 @@ class User < ActiveRecord::Base
     self.credits = 0
   end
 
-  def email_required?
-    super && provider.blank?
-  end
 end

@@ -1,9 +1,13 @@
 Hootgo::Application.routes.draw do
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users
+
+  get '/auth/:provider/callback', to: 'authorizations#create'
+  resources :authorizations
 
   get "dashboard", to: "campaigns#index"
   get "order", to: "campaigns#new"
+
 
   resources :campaigns do
   	resources :translations do

@@ -31,8 +31,9 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="navbar-text"><b>Your balance:</b> <%= current_user.credits %></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <b class="caret"></b></a>
         <ul class="dropdown-menu">
+          <li><%= link_to "Pages management", authorizations_path %></li>
           <li><%= link_to "Settings", edit_user_registration_path %></li>
           <li class="divider"></li>
           <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
