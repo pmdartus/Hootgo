@@ -25,7 +25,10 @@ class AuthorizationsController < ApplicationController
         :provider => omniauth.provider,
         :uid => omniauth.uid,
         :oauth_token => omniauth.credentials.token,
-        :oauth_secret_token => omniauth.credentials.secret
+        :oauth_secret_token => omniauth.credentials.secret,
+        :name => omniauth.info.nickname,
+        :photo_url => omniauth.info.image,
+        :language => Language.where(code: omniauth.extra.raw_info.lang).first
       )
       flash[:notice] = "The account ass been successfully linked."
       redirect_to authorizations_path

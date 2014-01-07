@@ -4,10 +4,11 @@
   <p><strong>You have signed in with these services:</strong></p>
     <% for authorization in @authorizations %>
       <div class="authentication">
-        <div class="provider"><%= authorization.provider %></div>
-        <div class="uid"><%= authorization.uid %></div>
-        <%= link_to "X", authorization, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
+        <div><%= authorization.name %> ( <%= authorization.language.name %> )</div>
+        <div><%= image_tag authorization.photo_url %></div>
+        <%= link_to "Delete authorization", authorization, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "btn btn-info" %>
       </div>
+      <hr/>
     <% end %>
   <% end %>
   <div class="clear"></div>
