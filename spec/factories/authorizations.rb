@@ -2,11 +2,10 @@
 
 FactoryGirl.define do
   factory :authorization do
-    provider "MyString"
-    uid "MyString"
-    user_id 1
-    oauth_token "MyText"
-    oauth_refresh_token "MyText"
+    provider "twitter"
+    uid "1232321"
+    oauth_token "qzdQZDdqzdqZDdzqDqfQZD"
+    oauth_refresh_token "qzdqZdQZdQZdQDQzdQDSQDZ"
     oath_expires_at "2014-01-07 08:45:51"
   end
 end
