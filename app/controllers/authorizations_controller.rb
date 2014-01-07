@@ -8,12 +8,18 @@ class AuthorizationsController < ApplicationController
 
   def create
     omniauth = request.env["omniauth.auth"]
+    puts request.env["omniauth.auth"].to_json
     authorization = Authorization.where(provider: omniauth.provider, uid: omniauth.uid, user_id: current_user.id).first
     if authorization
       flash[:notice] = "You had connected this application before"
       redirect_to authorizations_path
     else
-      current_user.authorizations.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      current_user.authorizations.create!(
+        :provider => omniauth.provider,
+        :uid => omniauth.uid,
+        :oauth_token => omniauth.credentials.token,
+        :oauth_secret_token => omniauth.credentials.secret
+      )
       flash[:notice] = "The account ass been successfully linked."
       redirect_to authorizations_path
     end

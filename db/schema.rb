@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107074551) do
+ActiveRecord::Schema.define(version: 20140107111005) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140107074551) do
     t.datetime "oath_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "oauth_secret_token"
   end
 
   create_table "campaigns", force: true do |t|
