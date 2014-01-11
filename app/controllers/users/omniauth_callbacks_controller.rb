@@ -2,6 +2,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     auth = request.env["omniauth.auth"]
+    puts auth.to_json
     @authorization = Authorization.find_with_oauth(auth)
 
     if @authorization.nil?

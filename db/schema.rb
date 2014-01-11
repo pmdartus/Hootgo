@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107074551) do
+ActiveRecord::Schema.define(version: 20140111192504) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_id"
     t.text     "oauth_token"
-    t.text     "oauth_refresh_token"
+    t.text     "oauth_secret"
     t.datetime "oath_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20140107074551) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "code"
+  end
+
+  create_table "pages", force: true do |t|
+    t.integer  "authorization_id"
+    t.string   "name"
+    t.integer  "language_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "translations", force: true do |t|
