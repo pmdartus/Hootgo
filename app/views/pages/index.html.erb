@@ -1,0 +1,10 @@
+<% @pages.each do |page| %>
+<p>
+  <%= image_tag page.image %>
+  <b><%= page.name %></b>
+  Language : <%= page.language.name %>
+</p>
+<ul>
+  <li><%= link_to "Update", edit_page_path(page) %> </li>
+</ul>
+<% end %>

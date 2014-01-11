@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :campaigns, dependent: :destroy
   has_many :authorizations, dependent: :destroy
+  has_many :pages, through: :authorizations
 
   # Initialize account after creation
   before_create :initialize_account

@@ -5,6 +5,8 @@ Hootgo::Application.routes.draw do
   get "dashboard", to: "campaigns#index"
   get "order", to: "campaigns#new"
 
+  resources :pages
+
   resources :campaigns do
   	resources :translations do
         post "update_status", to: "translations#update_status"
