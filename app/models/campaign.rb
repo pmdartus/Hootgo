@@ -2,9 +2,12 @@ class Campaign < ActiveRecord::Base
 
   	include GengoHelper
 
-	belongs_to :language
 	belongs_to :user
+	belongs_to :language
 	has_many :translations, dependent: :destroy
+	has_many :posts, dependent: :destroy
+
+	accepts_nested_attributes_for :posts
 
 	validates :source_text, :language_id, :user, presence: true
 	validate :debit_user

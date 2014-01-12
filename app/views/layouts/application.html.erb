@@ -9,61 +9,68 @@
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <%= link_to "Hootgo", root_path, class: "navbar-brand" %>
+<div id="wrap">
+  <!-- Navbar -->
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Hootgo", root_path, class: "navbar-brand" %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if user_signed_in? %>
+
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Dashboard", dashboard_path %></li>
+        <li><%= link_to "Order translation", order_path %></li>
+        <li><%= link_to "Page management", pages_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="navbar-text"><b>Your balance:</b> <%= current_user.credits %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Settings", edit_user_registration_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+          </ul>
+        </li>
+      </ul>
+
+      <% else %>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+      </ul>
+
+      <% end %>
+  </nav>
+
+  <!-- Notifications -->
+  <% if notice %>
+  <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+
+  <% if alert %>
+  <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
+
+  <!-- Render the main view -->
+  <div class="container">
+    <%= yield %>
   </div>
-
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <% if user_signed_in? %>
-
-    <ul class="nav navbar-nav">
-      <li><%= link_to "Dashboard", dashboard_path %></li>
-      <li><%= link_to "Order translation", order_path %></li>
-      <li><%= link_to "Page management", pages_path %></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="navbar-text"><b>Your balance:</b> <%= current_user.credits %></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Settings", edit_user_registration_path %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-        </ul>
-      </li>
-    </ul>
-
-    <% else %>
-
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Sign up", new_user_registration_path %></li>
-      <li><%= link_to "Sign in", new_user_session_path %></li>
-    </ul>
-
-    <% end %>
-</nav>
-
-<!-- Notifications -->
-<% if notice %>
-<div class="alert alert-success"><%= notice %></div>
-<% end %>
-
-<% if alert %>
-<div class="alert alert-danger"><%= alert %></div>
-<% end %>
-
-<!-- Render the main view -->
-<div class="container">
-  <%= yield %>
 </div>
 
+<div class="footer">
+  <div class="container">
+    <p>© 2013-2014 Hootgo. Made with love in Lyon</p>
+  </div>
+</div>
 </body>
 </html>

@@ -1,36 +1,5 @@
-<%= form_for(@campaign) do |f| %>
-  <% if @campaign.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
-
-      <ul>
-      <% @campaign.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :source_text %>
-    <%= f.text_area :source_text, class: "form-control", rows: "3" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :language %>
-    <%= f.collection_select(:language, Language.all, :id, :name, {}, {class: "form-control"}) %>
-  </div>
-  <div>
-    Publish on :
-    <% current_user.pages.each do |page| %>
-      <%= f.fields_for :posts, post do |p| %>
-      <p>
-        <%= image_tag page.image %>   <b><%= page.name %></b>
-        <%= p.collection_select(:language_id, Language.all, :id, :name, {}, {class: "form-control"}) %>
-      </p>
-      <% end %>
-    <% end %>
-  </div>
-
-    <%= f.submit 'Start translate', class: "btn btn-primary" %>
-<% end %>
+<script type="text/javascript">
+  var campaign = <%= @campaign.to_json.html_safe %>;
+  var userPages = <%= current_user.pages.to_json.html_safe %>;
+  var providedLanguages = <%= Language.all.to_json.html_safe %>;
+</script>

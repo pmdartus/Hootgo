@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111192504) do
+ActiveRecord::Schema.define(version: 20140112134144) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20140111192504) do
     t.string   "name"
     t.integer  "language_id"
     t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.integer  "campaign_id"
+    t.integer  "page_id"
+    t.integer  "translation_id"
+    t.integer  "twitter_post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

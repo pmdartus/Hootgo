@@ -33,6 +33,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.5.2'
 
+# Background job
+gem 'resque', :require => 'resque/server'
+
 # Users account management
 gem 'devise', '~> 3.1.1'
 gem 'omniauth', '~> 1.1.4'
