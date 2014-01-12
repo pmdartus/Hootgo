@@ -1,12 +1,17 @@
-Add a new page to manage : <%= link_to "Login", omniauth_authorize_path(:user, "twitter") %>
-
+<h1>Page Management</h1>
 <% @pages.each do |page| %>
-<p>
-  <%= image_tag page.image %>
-  <b><%= page.name %></b>
-  Language : <%= page.language.name %>
-</p>
-<ul>
-  <li><%= link_to "Update", edit_page_path(page) %> </li>
-</ul>
+<div class="row well">
+  <div class="col-md-1">
+    <%= image_tag page.image %>
+  </div>
+  <div class="col-md-9">
+    <b><%= page.name %></b> <br/>
+    Language : <%= page.language.name %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to "Update", edit_page_path(page), class: "btn btn-default" %>
+  </div>
+</div>
 <% end %>
+
+<%= link_to "+ Add new pages", omniauth_authorize_path(:user, "twitter"), class: "btn btn-primary" %>

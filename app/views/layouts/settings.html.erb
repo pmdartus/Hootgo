@@ -1,0 +1,15 @@
+<%= inside_layout "application" do %>
+<div class="two-columns-with-aside">
+    <aside>
+        <ul class="settings-menu">
+            <li><%= link_to "Page Management" , pages_path, class: cp(pages_path) %></li>
+        </ul>
+        <ul class="settings-menu">
+            <li><%= link_to "Settings", edit_user_registration_path %></li>
+        </ul>
+    </aside>
+    <section>
+        <%= yield %>
+    </section>
+</div>
+<% end %>
