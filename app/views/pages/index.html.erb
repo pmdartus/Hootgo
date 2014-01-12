@@ -1,14 +1,14 @@
 <h1>Page Management</h1>
 <% @pages.each do |page| %>
 <div class="row well">
-  <div class="col-md-1">
+  <div class="col-xs-1">
     <%= image_tag page.image %>
   </div>
-  <div class="col-md-9">
+  <div class="col-xs-9">
     <b><%= page.name %></b> <br/>
     Language : <%= page.language.name %>
   </div>
-  <div class="col-md-2">
+  <div class="col-xs-2">
     <%= link_to "Update", edit_page_path(page), class: "btn btn-default" %>
   </div>
 </div>
