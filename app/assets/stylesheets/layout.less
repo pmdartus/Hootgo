@@ -13,18 +13,43 @@ html, body {
 
 .container {
     width: 100%;
-    min-width: 970px !important;
+    min-width: @container-width !important;
 }
 
 .navbar {
-    box-shadow: darken(@body-bg, 20%) 0 0 2px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.075);
+    border-bottom: 1px solid #DBDBDB;
+    margin-bottom: 0;
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        min-width: 200px;
+        box-shadow: darken(@body-bg, 20%) 1px 1px 2px;
+    }
 }
 
 .navbar-brand {
     background: @purple;
 }
 
+
+section#page-content {
+    padding: 10px 0;
+
+    .single-panel {
+        background-color: #ffffff;
+        border: 1px solid #DBDBDB;
+        border-radius: 3px;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.075);
+        float: none;
+        margin: 36px;
+        min-width: @container-width;
+        overflow: hidden;
+        padding: 35px;
+        position: relative;
+    }
+}
+
 .footer {
     height: @footer-height;
-    padding: 7px;
+    padding: 15px;
 }
