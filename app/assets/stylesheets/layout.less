@@ -21,10 +21,16 @@ html, body {
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.075);
     border-bottom: 1px solid #DBDBDB;
     margin-bottom: 0;
+
     .dropdown:hover .dropdown-menu {
         display: block;
         min-width: 200px;
         box-shadow: darken(@body-bg, 20%) 1px 1px 2px;
+    }
+
+    .nav a.active {
+        padding-bottom: 12px;
+        border-bottom: 3px solid @purple;
     }
 }
 
@@ -55,6 +61,10 @@ section#page-content {
         overflow: hidden;
         padding: 35px;
         position: relative;
+    }
+
+    .single-panel > h1 {
+        margin-top: 0;
     }
 }
 
@@ -101,6 +111,7 @@ ul.settings-menu {
         color: lighten(@text-color, 20%);
         background: #fff;
         font-weight: bold;
+        border-left: 3px solid @purple;
     }
 }
 
