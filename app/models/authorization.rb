@@ -1,6 +1,6 @@
 class Authorization < ActiveRecord::Base
   belongs_to :user
-  has_one :page
+  has_one :page, dependent: :destroy
   validates :provider, :uid, presence: true
 
   def self.find_with_oauth(auth)

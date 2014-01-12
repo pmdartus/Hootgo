@@ -1,3 +1,5 @@
+Add a new page to manage : <%= link_to "Login", omniauth_authorize_path(:user, "twitter") %>
+
 <% @pages.each do |page| %>
 <p>
   <%= image_tag page.image %>

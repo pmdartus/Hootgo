@@ -18,7 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         # Authorization is not associated with this user
         @authorization.user = current_user
         @authorization.save()
-        redirect_to root_url, notice: "Account successfully linked"
+        redirect_to pages_path, notice: "Account successfully linked"
       end
     else
       if @authorization.user.present?
