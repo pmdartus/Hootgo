@@ -1,4 +1,7 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.0.0-p195
+- 2.0.0-p195
+env:
+  global:
+    secure: dQh2P6qRGDBu7NkBIuhVdoM0ONpVcUyfuY0/JkShNZrizVdP9LhWORNtbiVkD6RVW7Kqf3mADAxP10dPRkNmsLvwptpH8NNpxbfL9mThEWigjUsUbkal1ZjAw0TBWC+iZVfprPcnbA4LOwf0XA5dAMoIN+z1paVW31aw5C8JlfY=
