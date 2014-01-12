@@ -56,6 +56,7 @@ class CampaignsController < ApplicationController
   ## camapign_params
   # Define all the aceptable parameters for a post request
   def campaign_params
+    puts params
     params.require(:campaign).permit(:source_text, :language, :translations => [])
   end
 end

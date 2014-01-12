@@ -2,30 +2,17 @@ class User < ActiveRecord::Base
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook, :twitter]
+         :omniauthable, :omniauth_providers => [:twitter]
 
   has_many :campaigns, dependent: :destroy
+  has_many :authorizations, dependent: :destroy
+  has_many :pages, through: :authorizations
 
   before_create :initialize_account
-
   validate :positive_credits
 
-  ## find_for_facebook_oauth(auth, signed_in_ressource)
-  # Create and/or return the signed in user, with a random password
-  # param auth : facebook informations and credentials
-  # param signed_in_ressource : not used now
-  # return connected user
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      user = User.create(name:auth.extra.raw_info.name,
-                         provider:auth.provider,
-                         uid:auth.uid,
-                         email:auth.info.email,
-                         password:Devise.friendly_token[0,20]
-                         )
-    end
-    user
+  def self.create_with_oauth(auth)
+    create(name:auth.info.name, password: Devise.friendly_token[0,20])
   end
 
   ## get_credits
@@ -50,5 +37,9 @@ class User < ActiveRecord::Base
   # Add an error if the balance is negative
   def positive_credits
     errors.add(:credits, "Not enough credits") if self.credits and self.credits < 0
+  end
+
+  def email_required?
+    false
   end
 end

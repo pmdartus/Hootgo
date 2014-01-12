@@ -229,8 +229,8 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   # ==> OmniAuth
-  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"], :scope => 'publish_stream,email,offline_access,manage_pages'
-  config.omniauth :twitter, ENV["TW_APP_ID"], ENV["TW_APP_SECRET"]
+  # config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"], :scope => 'publish_stream,email,offline_access,manage_pages'
+  config.omniauth :twitter, ENV["TW_APP_ID"], ENV["TW_APP_SECRET"], authorize_params: {force_login: 'true'}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
