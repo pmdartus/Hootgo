@@ -2,7 +2,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     auth = request.env["omniauth.auth"]
-    puts auth.to_json
     @authorization = Authorization.find_with_oauth(auth)
 
     if @authorization.nil?
@@ -10,10 +9,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @authorization = Authorization.create_with_oauth(auth)
     end
 
-    if current_user
+    if user_signed_in?
       if @authorization.user == current_user
         # Authiorization already link with this account
-        redirect_to root_url, notice: "Account already linked"
+        redirect_to pages_path, notice: "Account already linked"
       else
         # Authorization is not associated with this user
         @authorization.user = current_user

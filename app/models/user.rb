@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   before_create :initialize_account
 
   def self.create_with_oauth(auth)
-    create(name:auth.info.name, password: Devise.friendly_token[0,20])
+    create!(name:auth.info.name, password: Devise.friendly_token[0,20])
   end
 
   private
