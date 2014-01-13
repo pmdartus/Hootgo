@@ -1,7 +1,52 @@
 <div class="single-panel">
-    <h1>Order a new campaign</h1>
-    <p>It easy to begin with Hootgo, chose when you want your campaign to be launched :</p>
-    <button class="btn btn-default btn-lg" id="send-asap">As soon as possible</button>
-    &nbsp; or &nbsp;
-    <button class="btn btn-default btn-lg" id="send-scheduled">On a schedule date</button>
+    <div id="choose-mode">
+        <h1>Order a new campaign</h1>
+        <p>It easy to begin with Hootgo, chose when you want your campaign to be launched :</p>
+        <button class="btn btn-default btn-lg" id="send-asap">As soon as possible</button>
+        &nbsp; or &nbsp;
+        <button class="btn btn-default btn-lg" id="send-sched">On a schedule date</button>
+    </div>
+    <div id="camapaign-form" class="hidden">
+        <hr/>
+        <textarea class="form-control" rows="3" id="tweet" placeholder="You tweet to translate ..."></textarea>
+        <hr/>
+
+        <div id="conserned-pages" class="row">
+          <div class="col-xs-4 hidden" id="add-page">
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                Add Page <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+              </ul>
+            </div>
+
+          </div>
+        </div>
+    </div>
+
 </div>
+
+<script type="text/javascript">
+  var campaign = <%= @campaign.to_json.html_safe %>;
+  var userPages = <%= current_user.pages.to_json.html_safe %>;
+  var providedLanguages = <%= Language.all.to_json.html_safe %>;
+</script>
+
+<script type="text/template" id="page-template">
+<div class="col-xs-4 page" data-id={{id}}>
+  <div class="row">
+    <div class="col-xs-3">
+      <img src="{{image}}">
+    </div>
+    <div class="col-xs-9">
+      <b>{{name}}</b> <br/>
+      Language : {{language.name}}
+    </div>
+    <div class="col-xs-2">
+      <button class="btn btn-default remove">Remove this campaign</button>
+    </div>
+  </div>
+</div>
+</script>
