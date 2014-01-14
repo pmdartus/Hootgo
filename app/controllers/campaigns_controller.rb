@@ -14,6 +14,7 @@ class CampaignsController < ApplicationController
   end
 
   def create
+    puts 'coucou'
     @campaign = Campaign.new
     @campaign.language = Language.find(campaign_params['language'])
     @campaign.source_text = campaign_params['source_text']
